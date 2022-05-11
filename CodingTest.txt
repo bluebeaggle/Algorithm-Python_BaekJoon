@@ -49,8 +49,13 @@ end_time = time.time()
 print("time : ", end_time-start_time)
 으로 시간측정 가능
 
-
-
+list 함수 시간복잡도
+append() - 1
+sort() - nlogn #오름차순
+reverse() - n #내림차순
+insert() - n
+count(특정값) - n
+remove(특정값) - n
 
 
 
