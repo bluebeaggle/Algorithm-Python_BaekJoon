@@ -132,14 +132,93 @@ print(f"정닶은 {answer}입니다. ")
 
 #조건문과 반복문
 #part1 - 조건문
+x = 15
+if x>= 10:
+    print("X>10")
+if x >= 0 :
+    print("X >=0")
+if x >= 30:
+    print("X>=30")
+
+#들여쓰기 Tab vs space
+#Python 스타일 가이드라인에서는 4개의 공백 문자를 사용하는것을 표준으로 설정하고 있음
+
+#반복문
+#while / for 문이 있지만, for문이 조금더 간결하게 가능
+
+result = 0
+for i in range(11):
+    result += i
+print(result)
 
 
+for i in range(11):
+    if i %2 == 0:
+        continue
+    result += i
+print(result)
+
+for i in range(11):
+    if i ==5 :
+        break
+    print(i)
 
 
+#함수 및 람다 식
+'''
+def 함수명(매개변수) :
+    실행할 소스코드
+    return 반환 값
+'''
+'''
+함수 내에 전역변수 사용하기 위함
+global
 
+a= 100
+def func():
+    global a
+    a += 1
+    print(a)
 
+fun()
+'''
+'''
+값을 변경 및 변경이 아닌,
+값을 참조만 하는 경우에는 그냥 써도 참조됨
+// 전역변수로 리스트로 되어있으면, 그냥 써도 됨
 
+'''
 
+'''
+함수는 여러개의 반환 값을 가질 수 있음
+
+def operator(a,b) :
+    add = a+b
+    sub = a-b
+    mul = a*b
+    di  = a/b
+    return add, sub, mul, di
+
+a, b, c, d = operator(7,3)
+print(a,b,c,d)
+'''
+#람다
+#함수를 한줄로 작성가능
+
+def add(a,b) :
+    return a+b
+
+print(add(3,7))
+#람다 함수 == (lambda 식)()
+print((lambda a,b: a+b)(3,7))
+
+array = [('홍길동',50), ('이순신',32), ('아무개',74)]
+
+def my_key(x) :
+    return x[1]
+
+print(sorted(array, key=my_key))            #sorted(리스트, key속성(정렬기준을 명시 할 수 있음))
+print(sorted(array, key=lambda x:x[1]))
 
 
 
