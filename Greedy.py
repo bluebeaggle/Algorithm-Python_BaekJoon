@@ -19,6 +19,10 @@ Q. 단순히 가장 큰 값만 고른다면 5-10-4=19
 - 큰 단위가 항상 작은 단위의 배수이므로 작은 단위의 동전들을 종합해 다른 해가 나올 수 없기 때문
 '''
 # 거스름 돈 답안
+from re import I
+from turtle import numinput
+
+
 n = 1260    # 거스름 돈
 count = 0
 
@@ -108,19 +112,81 @@ print(result)
 확인하여 숫자 사이에 'x'혹은 '+' 연산자를 넣어 결과적으로 만들어 질 수 있는 가장 큰 수를 구하는 프로그램
 을 작성하시오
 단, +보다 x를 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽부터 이루어진다고 가정
+만들어지는 수의 가장 큰값은 항상 20억 이하의 정수
+'''
+'''
+ # 대헌 구현
+
+S = list(input())
+
+result = 1
+
+print(S)
+for i in S :
+    if int(i) <= 1 :
+        result += int(i)
+    else :
+        result *= int(i)
+
+print(result)
+# input 이 0이 들어와도 결과값이 1이 나오기때문에, result 초기화시 1 Nope
+# result에 처음 input값 넣는게 나음
+
+# 해설
+'''
+# 0 혹은 1일 경우는 더하기를 수행 / 이외는 곱하기 수행
+'''
+data = input()
+# 첫 번째 문자를 숫자로 변경하여 대입
+result = int(data[0])
+
+for i in range(1, len(data)) :
+    # 두 수 중 하나라도 0 혹은 1인 경우, 곱하기보다는 더하기 수행
+    num = int(data[i])
+    if num <= 1 or result <= 1:
+        result += num
+    else :
+        result *= num
+
+print(result)
 '''
 
+'''
+문제 ) 한 마을에 모험가 N명이 있음 / 각 모험가마다 공포도가 있음
+공포도가 X인 모험가는 반드시 X명 이상으로 구성된 모험가 그룹에 참여해야만 여행을 떠날 수 있음
+N명의 모험가에 대한 정보가 주어졌을 때 최대 몇 개의 모험가 그룹을 만들 수 있는가? 
+'''
+'''
+예시) N = 5 이고, 공포도는 2 3 1 2 2 와 같다
+첫번째 줄에 N이 주어지며,
+둘째 줄에는 각 모험가의 공포도가 N이하의 자연수로 공백을 기준으로 주어진다
+'''
+
+# 대헌
+N = int(input())
+fear = list(map(int,input().split()))
+fear = sorted(fear)
 
 
 
+# 해설
+# 오름차순 정렬하여, 앞에서부터 공포도를 하나씩 확인하여
+# '현재 그룹에 포함된 모험가의 수'가 현재 확인하고 있는 공포도보다 크거나 같다면, 이를 그룹으로 설정
 
+n = int(input())
+data = list(map(int,input().split()))
+data.sort()
 
+result = 0      # 총 그룹의 수
+count = 0       # 현재 그룹에 포함된 모험가의 수
 
+for i in data :         # 공포도를 낮은 것 부터 하나씩 확인
+    count += 1          # 현재 그룹에 해당 모험가를 포함시키기
+    if count >= i:      # 현재 그룹에 포함된 모험가의 수가 현재 공포도 이상이라면, 그룹 결성
+        result += 1     # 그룹 수 증가
+        count = 0       # 모험가 수 초기화
 
-
-
-
-
+print(result)
 
 
 
